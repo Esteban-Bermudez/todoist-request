@@ -1,0 +1,12 @@
+body {
+  background-color: #121212;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+  font-size: 250%;
+  justify-content: center;
+  height: 900px;
+}
+
+
