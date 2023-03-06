@@ -3,17 +3,24 @@
 <head>
 	<title>HTTP POST Request Example</title>
 </head>
-<body onload="sendPostRequest()">
+<body onload="sendRequest()">
 	<h1>HTTP POST Request Example</h1>
 	<p id="response">Waiting for response...</p>
 
 	<script>
-		function sendPostRequest() {
+		function sendRequest() {
 			// Set up request parameters
+      const searchParams = new URLSearchParams(window.location.search);
+      const request_method = searchParams.get('method');
+      const apitoken = searchParams.get('apitoken');
+
+      console.log(apitoken)
+      console.log(request_method)
+
 			const url = "https://api.todoist.com/rest/v2/projects";
-      const apitoken = "2919e0f314f5ae2f13a825420c3beef469be437d";
+      //const apitoken = "2919e0f314f5ae2f13a825420c3beef469be437d";
 			const options = {
-				method: "GET",
+				method: `${request_method}`,
 				headers: {
 					"Content-Type": "application/json",
           Authorization:`Bearer ${apitoken}`
