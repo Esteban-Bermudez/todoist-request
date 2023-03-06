@@ -15,10 +15,10 @@
       const apitoken = searchParams.get('apitoken');
       //const action = searchParams.get('action')
 
-			const url = "https://api.todoist.com/rest/v2/projects";
+			const url = "https://api.todoist.com/rest/v2/tasks/6675371923/close";
       
 			const options = {
-				method: "GET",
+				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
           "Authorization":`Bearer ${apitoken}`
@@ -28,8 +28,17 @@
 
 			// Send request and handle response
 			fetch(url, options)
-				.then(response => response.json())
+				.then(response => {
+          if (response.status === 204) {
+						// If response status is 204, there is no content to parse
+						return "Response 204";
+					} else {
+						// Otherwise, parse the response as JSON
+						return response.json();
+					}
+        })
 				.then(data => {
+          console.log(data);
 					document.getElementById("response").innerText = JSON.stringify(data);
 				})
 				.catch(error => {
