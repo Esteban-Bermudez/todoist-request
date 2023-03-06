@@ -12,8 +12,10 @@ window.addEventListener("load", () => {
     .add(task)
     .then(response => {
       console.log(response)
+      document.getElementById("output").innerHTML(response)
     })
     .catch(error => {
       console.error(error)
+      document.getElementById("output").innerHTML(error)
     })
 })
