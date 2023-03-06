@@ -9,21 +9,19 @@
 
 	<script>
 		function sendRequest() {
+      
 			// Set up request parameters
       const searchParams = new URLSearchParams(window.location.search);
-      const request_method = searchParams.get('method');
       const apitoken = searchParams.get('apitoken');
-
-      console.log(apitoken)
-      console.log(request_method)
+      //const action = searchParams.get('action')
 
 			const url = "https://api.todoist.com/rest/v2/projects";
-      //const apitoken = "2919e0f314f5ae2f13a825420c3beef469be437d";
+      
 			const options = {
-				method: `${request_method}`,
+				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
-          Authorization:`Bearer ${apitoken}`
+          "Authorization":`Bearer ${apitoken}`
 				},
 				body: JSON.stringify()
 			};
