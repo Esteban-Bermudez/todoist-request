@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTTP POST Request Example</title>
+</head>
+<body onload="sendPostRequest()">
+	<h1>HTTP POST Request Example</h1>
+	<p id="response">Waiting for response...</p>
+
+	<script>
+		function sendPostRequest() {
+			// Set up request parameters
+			const url = "https://api.todoist.com/rest/v2/projects";
+      const apitoken = "2919e0f314f5ae2f13a825420c3beef469be437d";
+			const options = {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+          Authorization:`Bearer ${apitoken}`
+				},
+				body: JSON.stringify()
+			};
+
+			// Send request and handle response
+			fetch(url, options)
+				.then(response => response.json())
+				.then(data => {
+					document.getElementById("response").innerText = JSON.stringify(data);
+				})
+				.catch(error => {
+					console.error("Error:", error);
+				});
+		}
+	</script>
+</body>
+</html>
