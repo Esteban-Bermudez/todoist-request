@@ -1,3 +1,5 @@
+import { TodoistApi } from "@doist/todoist-api-typescript"
+
 window.addEventListener("load", () => {
   const params = new URLSearchParams(window.location.search)
   const task = {
@@ -6,16 +8,9 @@ window.addEventListener("load", () => {
   }
 
   const token = params.get("api-token")
-  const todoist = TodoistJS(token)
+  const api = new TodoistApi(token)
 
-  todoist.tasks
-    .add(task)
-    .then(response => {
-      console.log(response)
-      document.getElementById("output").innerHTML(response)
-    })
-    .catch(error => {
-      console.error(error)
-      document.getElementById("output").innerHTML(error)
-    })
+  api.addTask({ content: "Buy Milk", projectId: "2297304082" })
+    .then((task) => console.log(task))
+    .catch((error) => console.log(error))
 })
