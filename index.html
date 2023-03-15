@@ -13,10 +13,12 @@
       
 			// Set up request parameters
       const searchParams = new URLSearchParams(window.location.search);
-      const apitoken = searchParams.get('apitoken');
-      //const action = searchParams.get('action')
+      const apitoken = searchParams.get('apitoken')|| 0;
+      //const action = searchParams.get('action') || 0;
+			const taskid = searchParams.get('id')  || 0;
 
-			const url = "https://api.todoist.com/rest/v2/tasks/6183729031/close";
+
+			const url = `https://api.todoist.com/rest/v2/tasks/${taskid}/close`;
       
 			const options = {
 				method: "POST",
